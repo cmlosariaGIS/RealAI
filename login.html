@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <title>Login Page</title>
+    <style>
+
+body {
+  background-image: url('https://images.pexels.com/photos/1782154/pexels-photo-1782154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'), 
+                    url('http://localhost:8084/webgis/resources/pexels-maria-orlova-4946918.jpg');
+  background-size: cover;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+  color: #373a3c;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f2f2f2;
+  height: 100vh;
+  
+  animation: fade 10s infinite;
+}
+
+@keyframes fade {
+  0% { background-position: left center, right center; }
+  50% { background-position: right center, left center; }
+  100% { background-position: left center, right center; }
+}
+
+#login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: 2px solid rgb(0, 191, 255);
+}
+
+input[type="password"] + span {
+  position: relative;
+  left: -25px;
+}
+/* Styles for the Sign in button */
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+/* Styles for the Social login button */
+#social-login {
+  text-align: center;
+}
+
+h3 {
+  margin: 20px 0;
+}
+
+button#facebook-login,
+button#google-login {
+  background-color: #3B5998;
+  height: 40px;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+  margin-top: -10px; /* added margin to top */
+  display: inline-flex;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+#facebook-login {
+  display: flex;
+  align-items: center;
+}
+
+#facebook-login img {
+  margin-right: 10px;
+}
+
+button#google-login {
+  background-color: #dd4b39;
+  margin-right: 0;
+}
+
+#google-login {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+#google-login img {
+  margin-right: 10px;
+}
+
+button#facebook-login:hover,
+button#google-login:hover {
+  opacity: 0.8;
+}
+
+button#tiktok-login {
+  left: 50%;
+  height: 40px;
+  transform: translateX(90%);
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 8px; /* added margin to top */
+  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  padding-top: 10px;
+}
+
+#tiktok-login img {
+  margin-right: 10px;
+}
+
+button#tiktok-login:hover {
+  opacity: 0.8;
+}
+
+/* Styles for the create account button */
+#create-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: #4CAF50;
+}
+
+/* Styles for the eye icon */
+#eye-icon {
+  position: absolute;
+  top: 40%;
+  right: -35px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#eye-icon img {
+  width: 25px;
+  height: 25px;
+}
+
+/* Styles for the login warning */
+.warning-message {
+    font-size: 0.8rem;
+    color: red;
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    margin-top: 2.2rem;
+  }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="background-transition"></div>
+    <div id="login-container" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div id="logo-container" style="text-align: center;">
+        <img src="https://i.ibb.co/rGN5GwP/logo-encity.png" alt="enCity logo" width="50" height="39">
+      </div>
+      <h2>Login to enGia</h2>
+      <form id="login-form" action="login.php" method="post">
+        <label for="mobile">Register mobile number</label>
+        <input type="text" id="mobile" name="mobile" placeholder="+84 XXXXXXXXX" required>
+        <label for="password">Enter password</label>
+        <div style="position: relative;">
+          <input type="password" id="password" name="password" required>
+          <div id="eye-icon">
+            <img src="https://i.ibb.co/jf6mNWv/icons8-eye-24.png" alt="Eye icon">
+          </div>
+        </div>
+        <button type="submit" id="login-btn">Sign In</button>
+      </form>
+      <div id="social-login" style="margin-top: -20px;">
+        <h5>Or login with:</h5>
+        <button id="facebook-login"><img src="https://i.ibb.co/rpXY1S8/icons8-facebook-24.png" alt="Facebook">Facebook</button>
+        <button id="google-login"><img src="https://i.ibb.co/3hPWYSQ/icons8-google-24.png" alt="Google">Google</button>
+        <button id="tiktok-login"><img src="https://i.ibb.co/2K7jvWd/icons8-tiktok-24.png" alt="TikTok">TikTok</button>
+      </div>
+      <div id="create-account">
+        <h5>Don't have an account yet?&nbsp;&nbsp;</h5>
+        <a href="signup.php"><h5>Create an account</h5></a>
+      </div>
+
+
+    <script>
+      // Script for the password reveal eye icon
+      const passwordInput = document.querySelector('#password');
+      const eyeIcon = document.querySelector('#eye-icon');
+      const eyeImg = document.querySelector('#eye-icon img');
+
+      eyeIcon.addEventListener('click', function () {
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          eyeImg.src = 'https://i.ibb.co/rty7Kb0/icons8-eye-24-blue.png'; //hide password
+        } else {
+          passwordInput.type = 'password';
+          eyeImg.src = 'https://i.ibb.co/jf6mNWv/icons8-eye-24.png'; //show password
+        }
+      });
+    </script>
+
+<script>
+  document.getElementById('login-btn').addEventListener('click', function(event) {
+    // Prevent the form from submitting before checking the inputs
+    event.preventDefault();
+
+    // Check if both input fields have a value
+    const mobileInput = document.getElementById('mobile');
+    const passwordInput = document.getElementById('password');
+    if (mobileInput.value && passwordInput.value) {
+      // Show the spinner and change the button text
+      this.innerHTML = 'Logging in... <i class="fa fa-spinner fa-spin"></i>';
+
+      // Submit the form after a short delay to allow the spinner to display
+      setTimeout(() => {
+        document.getElementById('login-form').submit();
+      }, 500);
+    } else {
+      // Show a warning message if either input field is empty
+      const warningMsg = document.createElement('p');
+      warningMsg.classList.add('warning-message');
+      warningMsg.innerText = 'Please enter a valid mobile number and password.';
+      const form = document.getElementById('login-form');
+      form.insertBefore(warningMsg, form.firstChild);
+    }
+  });
+</script>
+
+
+  </body>
+  
+  
+  
+</html>
