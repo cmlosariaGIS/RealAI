@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/0eb73cfc5c.js" crossorigin="anonymous"></script>
+    <title>Floating Container with Shadow</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 1000px;
+            height: 600px;
+            background-color: rgba(255, 255, 255, 1);
+            /* 75% opacity white */
+            border-radius: 3px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("https://i.ibb.co/mB2yt4d/bg.png");
+            background-size: 100% 100%;
+        }
+
+
+        .section-1,
+        .section-3 {
+            flex: 1;
+        }
+
+        .section-2 {
+            flex: 3;
+            display: grid;
+            grid-template-columns: 0.3fr repeat(4, 1fr) 0.3fr;
+            grid-gap: 10px;
+        }
+
+        .section-2 p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            color: #ffffff;
+            padding-top: 0px;
+        }
+
+        .section-2 img {
+            object-fit: cover;
+            width: 100%;
+            height: 85%;
+            border-radius: 3px;
+            transition: opacity 0.5s ease;
+            margin-bottom: -10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-2 img:hover {
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
+        }
+
+
+        .section-2 .small {
+            font-size: 0.8em;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 80%;
+                max-width: 600px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .container {
+                width: 95%;
+                max-width: none;
+            }
+        }
+
+        h2 {
+            padding-left: 60px;
+            display: inline;
+            color: #1E3050;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            vertical-align: bottom;
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        .typed-text {
+            display: inline-block;
+            vertical-align: bottom;
+            position: relative;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .next-btn {
+            padding: 6px 20px;
+            border-radius: 3px;
+            background-color: #1E3050;
+            color: #fff;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            margin-right: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-left: auto;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .next-btn:hover {
+            background-color: #3b5998;
+        }
+
+        .progress-bar-container {
+            position: fixed;
+            bottom: 160px;
+            /* change the distance from bottom to 10px */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .progress-bar {
+            height: 5px;
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+            /* add margin-top to separate from container */
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #1E3050;
+            animation: fill 5s ease-in-out;
+        }
+
+        .progress {
+            .progress-bar:before {
+                width: 100%;
+            }
+        }
+
+        @keyframes fill {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        .fa-check-circle {
+            font-size: 32px;
+            color: #ffffff;
+        }
+
+        .card {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.2);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="section-1"></div>
+        <h2><span class="typed-text"></span><span class="typing-cursor">|</span></h2>
+        <div class="section-2">
+            <div class="small"></div>
+
+            <div class="card">
+                <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Image 1">
+                <div class="card-content">
+                    <p style="text-align: center;">RENT A PROPERTY</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.pexels.com/photos/6077554/pexels-photo-6077554.jpeg" alt="Image 2">
+                <div class="card-content">
+                    <p style="text-align: center;">BUY A PROPERTY</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://images.pexels.com/photos/7599735/pexels-photo-7599735.jpeg" alt="Sell a Property">
+                <div class="card-content">
+                    <p>SELL A PROPERTY</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.pexels.com/photos/5429131/pexels-photo-5429131.jpeg" alt="Stay Updated">
+                <div class="card-content">
+                    <p>STAY UPDATED</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-3">
+            <button class="next-btn">Next</button>
+            <br>
+        </div>
+    </div>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+
+
+    <!--Welcome Typing Script-->
+    <script>
+        const text = "Hello <User>, welcome to RealAI. You are here to...";
+        const speed = 50; // Adjust typing speed as needed
+
+        let i = 0;
+        let left = 0;
+        let timeoutId = null;
+
+        function type() {
+            if (i < text.length) {
+                document.querySelector(".typed-text").innerHTML += text.charAt(i);
+                left += 10; // Adjust cursor speed as needed
+                document.querySelector(".typing-cursor").style.left = `${left}px`;
+                i++;
+
+                // Check for period to start timer to hide cursor
+                if (text.charAt(i - 1) === '.') {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => {
+                        document.querySelector(".typing-cursor").style.display = "none";
+                    }, 3000);
+                }
+                else {
+                    document.querySelector(".typing-cursor").style.display = "inline-block";
+                }
+                setTimeout(type, speed);
+            }
+        }
+
+        type();
+
+    </script>
+    <!--Progress Bar-->
+    <script>
+        const progressBarContainer = document.querySelector('.progress-bar-container');
+
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            progressBarContainer.classList.add('progress');
+            setTimeout(() => {
+                progressBarContainer.classList.remove('progress');
+            }, 5000); // Reset progress bar after 5 seconds
+        });
+
+    </script>
+    <script>
+        const images = document.querySelectorAll('.section-2 img');
+        images.forEach((img) => {
+            img.addEventListener('click', (e) => {
+                const clickedImg = e.target;
+                // remove any previously added check marks
+                const checkMarks = document.querySelectorAll('.fa-check-circle');
+                checkMarks.forEach((mark) => mark.remove());
+                // create a new check mark
+                const checkMark = document.createElement('i');
+                checkMark.classList.add('fas', 'fa-check-circle');
+                // position the check mark in the center of the clicked image
+                const imgRect = clickedImg.getBoundingClientRect();
+                checkMark.style.position = 'absolute';
+                checkMark.style.top = `${imgRect.top + (imgRect.height / 2) - 24}px`;
+                checkMark.style.left = `${imgRect.left + (imgRect.width / 2) - 24}px`;
+                // add the check mark to the document
+                document.body.appendChild(checkMark);
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>
