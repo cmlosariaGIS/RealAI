@@ -163,7 +163,7 @@
             align-items: center;
             text-align: center;
             margin-left: auto;
-            margin-top: 15px;
+            margin-top: 30px;
             margin-bottom: 15px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: none;
@@ -230,12 +230,13 @@
         <div class="section-2">
             <div class="small"></div>
 
-            <div class="card card-1">
+            <div class="card card-1 card-fade-in">
                 <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Image 1">
                 <div class="card-content">
                     <p style="text-align: center;">RENT A PROPERTY</p>
                 </div>
             </div>
+
 
             <div class="card card-2">
                 <img src="https://images.pexels.com/photos/6077554/pexels-photo-6077554.jpeg" alt="Image 2">
@@ -357,11 +358,10 @@
         }
 
         setTimeout(() => {
-            document.querySelector(".typing-cursor").style.display = "none";
-            document.querySelector("#next").classList.remove('hidden');
             showSection2And3();
             showCards();
         }, 3000);
+
     </script>
 
 
