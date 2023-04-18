@@ -143,15 +143,27 @@
 
         .card-content {
             position: absolute;
-            bottom: 0;
+            bottom: 0%;
             left: 0;
             width: 100%;
-            color: #fff;
-            padding: 10px 10px 10px 6px;
-            /* add 50px left padding */
+            text-align: center;
+            transition: bottom 0.3s ease;
+        }
+
+        .card:hover .card-content {
+            bottom: 20%;
+            /* Show the text on hover, adjust this value to change the background height */
+        }
+
+        .description {
+            display: none;
+            font-size: 0.8em;
             text-align: center;
         }
 
+        .card:hover .description {
+            display: block;
+        }
 
         .next-btn {
             padding: 6px 20px;
@@ -174,7 +186,6 @@
         }
 
         #next {
-            /* ... */
             display: flex;
         }
 
@@ -185,7 +196,6 @@
         .progress-bar-container {
             position: fixed;
             bottom: 160px;
-            /* change the distance from bottom to 10px */
             left: 50%;
             transform: translateX(-50%);
             width: 80%;
@@ -199,7 +209,7 @@
             border-radius: 5px;
             overflow: hidden;
             margin-top: 10px;
-            /* add margin-top to separate from container */
+
         }
 
         .progress-bar-fill {
@@ -223,6 +233,14 @@
                 width: 100%;
             }
         }
+
+        .fa-circle {
+            color: #fff;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+
     </style>
 </head>
 
@@ -237,7 +255,8 @@
             <div class="card card-1 card-fade-in">
                 <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Image 1">
                 <div class="card-content">
-                    <p style="text-align: center;">RENT A PROPERTY</p>
+                    <p class="title">RENT A PROPERTY</p>
+                    <p class="description">Find a house, apartment, or land to rent</p>
                 </div>
             </div>
 
@@ -324,26 +343,32 @@
 
     <!--Card Check for Selection-->
     <script>
+        let selectedCardIndex = -1; // initialize with an invalid index
         const images = document.querySelectorAll('.section-2 img');
-        images.forEach((img) => {
+        const checkMark = document.createElement('i');
+        checkMark.classList.add('fas', 'fa-check-circle');
+        checkMark.style.position = 'absolute';
+        checkMark.style.top = '-100px'; // hide check mark off screen
+        checkMark.style.left = '-100px';
+        document.body.appendChild(checkMark); // add check mark to the document
+
+        images.forEach((img, i) => {
             img.addEventListener('click', (e) => {
                 const clickedImg = e.target;
-                // remove any previously added check marks
-                const checkMarks = document.querySelectorAll('.fa-check-circle');
-                checkMarks.forEach((mark) => mark.remove());
-                // create a new check mark
-                const checkMark = document.createElement('i');
-                checkMark.classList.add('fas', 'fa-check-circle');
                 // position the check mark in the center of the clicked image
                 const imgRect = clickedImg.getBoundingClientRect();
-                checkMark.style.position = 'absolute';
                 checkMark.style.top = `${imgRect.top + (imgRect.height / 2) - 24}px`;
-                checkMark.style.left = `${imgRect.left + (imgRect.width / 2) - 14}px`;
-                // add the check mark to the document
-                document.body.appendChild(checkMark);
+                checkMark.style.left = `${imgRect.left + (imgRect.width / 2) - 10}px`;
+                // show the check mark
+                checkMark.style.opacity = 1;
+                // store the selected card index
+                selectedCardIndex = i;
+                console.log(`Selected card: ${selectedCardIndex}`);
             });
         });
     </script>
+
+
     <!--Show Section 2 and 3-->
     <script>
 
