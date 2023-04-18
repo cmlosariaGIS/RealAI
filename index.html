@@ -118,13 +118,17 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             transform: translateY(10%);
-            transition: transform 0.75s ease;
+            opacity: 0;
+            transition: opacity 0.75s ease;
         }
 
         .card-fade-in {
             transform: translateY(0);
         }
 
+        .card.card-fade-in {
+            opacity: 1;
+        }
 
         .card img {
             object-fit: cover;
