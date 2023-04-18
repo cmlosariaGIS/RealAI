@@ -170,6 +170,12 @@
             display: block;
         }
 
+        .fa-circle {
+            color: #fff;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
         .next-btn {
             padding: 6px 20px;
             border-radius: 3px;
@@ -214,30 +220,13 @@
             border-radius: 5px;
             overflow: hidden;
             margin-top: 10px;
-
         }
 
         .progress-bar-fill {
             height: 100%;
             background-color: #1E3050;
             animation: fill 5s ease-in-out;
-            width: 20%;
-        }
-
-        @keyframes fill {
-            0% {
-                width: 0%;
-            }
-
-            100% {
-                width: 20%;
-            }
-        }
-
-        .fa-circle {
-            color: #fff;
-            background-color: #fff;
-            border-radius: 50%;
+            width: 0%;
         }
     </style>
 </head>
@@ -289,12 +278,12 @@
         </div>
     </div>
 
-<!--Progress Bar-->
-<div class="progress-bar-container">
-    <div class="progress-bar">
-      <div class="progress-bar-fill"></div>
+    <!--Progress Bar-->
+    <div class="progress-bar-container">
+        <div class="progress-bar">
+            <div class="progress-bar-fill"></div>
+        </div>
     </div>
-  </div>
 
     <!--Welcome Typing Script-->
     <script>
@@ -331,7 +320,6 @@
     </script>
     <!--Progress Bar-->
     <script>
-        const progressBarContainer = document.querySelector('.progress-bar-container');
         const progressBarFill = document.querySelector('.progress-bar-fill');
 
         document.querySelectorAll('.section-2 img').forEach((img, i) => {
@@ -339,7 +327,6 @@
                 progressBarFill.style.width = '20%'; // fill progress bar to 20%
             });
         });
-
     </script>
 
     <!--Card Check for Selection-->
@@ -368,6 +355,7 @@
             });
         });
     </script>
+
 
 
     <!--Show Section 2 and 3-->
